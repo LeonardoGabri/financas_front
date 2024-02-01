@@ -1,0 +1,33 @@
+<po-modal
+  #filtroParcela
+  p-size="md"
+  p-title="Busca avançada Parcelas"
+  [p-primary-action]="acaoFiltro"
+>
+  <form
+    [formGroup]="formulario"
+  >
+  <div class="po-row">
+    <po-input
+      class="po-md-6"
+      formControlName="mesReferencia"
+      p-label="Mês de referência"
+    ></po-input>
+
+    <po-input
+      class="po-md-6"
+      formControlName="anoReferencia"
+      p-label="Ano de referência"
+    ></po-input>
+  </div>
+
+  <div class="po-row">
+    <po-combo
+      class="po-md-12"
+      formControlName="responsavelId"
+      p-label="Responsável"
+      [p-filter-service]="responsavelComboService"
+    ></po-combo>
+  </div>
+  </form>
+</po-modal>

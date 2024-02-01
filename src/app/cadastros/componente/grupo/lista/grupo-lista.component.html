@@ -1,0 +1,25 @@
+<po-page-list
+  #paginaListaGrupo
+  [p-actions]="acoes"
+  [p-title]="nomePagina"
+  [p-filter]="grupoListaFilter"
+  [p-disclaimer-group]="grupoListaDisclaimer"
+>
+  <po-container style="width: 100%">
+    <po-table
+      #tabelaListaGrupo
+      style="width: 100%"
+      (p-show-more)="mostrarMaisGrupos()"
+      [p-actions]="grupoListaAcoes"
+      [p-sort]="true"
+      [p-striped]="true"
+      [p-loading]="carregandoTabelaGrupo"
+      [p-loading-show-more]="carregandoDadosGrupo"
+      [p-show-more-disabled]="desabilitarCarregarMais"
+      [p-items]="listaGrupos"
+      [p-columns]="colunasTabelaGrupo"
+      [p-actions-right]="true"
+    >
+    </po-table>
+  </po-container>
+</po-page-list>

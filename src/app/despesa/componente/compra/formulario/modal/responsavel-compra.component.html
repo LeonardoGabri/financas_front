@@ -1,0 +1,35 @@
+<po-modal
+  #modalResponsavelCompra
+  p-size="xl"
+  p-title="Responsável da compra"
+  [p-primary-action]="acao"
+>
+  <form [formGroup]="formulario">
+    <div class="po-row">
+      <po-combo
+        class="po-md-12"
+        formControlName="id"
+        p-label="Responsável"
+        [p-filter-service]="responsavelComboService"
+        [p-clean]="true"
+        [p-required]="true"
+        [p-emit-object-value]="true"
+        (p-change)="alteraResponsavel($event)"
+      >
+      </po-combo>
+    </div>
+
+    <div class="po-row">
+      <po-decimal
+        class="po-md-12"
+        formControlName="percentual"
+        p-label="Porcentagem da compra"
+        p-clean="true"
+        p-required="true"
+        p-mask="999"
+      >
+      </po-decimal>
+    </div>
+
+  </form>
+</po-modal>

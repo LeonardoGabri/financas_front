@@ -1,0 +1,66 @@
+<po-page-default
+  [p-title]="nomePagina"
+  [p-breadcrumb]="navegacao"
+  [p-actions]="acoes"
+>
+  <po-container>
+    <form [formGroup]="formulario">
+      <div class="po-row">
+        <po-input
+          class="po-md-6"
+          p-label="Mês de referência"
+          formControlName="mesReferencia"
+          p-required="true"
+          p-clean="true"
+          p-mask="99"
+        ></po-input>
+
+        <po-input
+          class="po-md-6"
+          p-label="Ano de referência"
+          formControlName="anoReferencia"
+          p-required="true"
+          p-clean="true"
+          p-mask="2099"
+        ></po-input>
+      </div>
+
+      <div class="po-row">
+        <po-combo
+          class="po-md-6"
+          formControlName="responsavelId"
+          p-label="Responsável"
+          [p-disabled]="true"
+          [p-filter-service]="responsavelComboService"
+        ></po-combo>
+      </div>
+
+      <div class="po-row">
+        <po-input
+          class="po-md-6"
+          p-label="Parcela Atual"
+          formControlName="parcelaAtual"
+          p-required="true"
+          p-clean="true"
+        ></po-input>
+
+        <po-decimal
+          class="po-md-6"
+          p-label="Valor parcelado"
+          formControlName="valorParcelado"
+          p-required="true"
+          p-clean="true"
+        ></po-decimal>
+      </div>
+
+      <div class="po-row">
+        <po-button
+          class="po-md-3"
+          style="margin-top: 10px;"
+          p-label="Visualizar Compra"
+        ></po-button>
+      </div>
+    </form>
+    <br /><br /><br />
+  </po-container>
+</po-page-default>

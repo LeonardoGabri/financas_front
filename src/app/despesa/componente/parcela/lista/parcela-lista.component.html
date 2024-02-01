@@ -1,0 +1,38 @@
+<po-page-list
+  #paginaListaParcela
+  [p-actions]="acoes"
+  [p-title]="nomePagina"
+  [p-filter]="parcelaListaFilter"
+  [p-disclaimer-group]="parcelaListaDisclaimer"
+>
+<h1>Valor total: {{ this.valorTotal | formatterReal}}</h1>
+  <po-container style="width: 100%">
+    <po-table
+      #tabelaListaParcela
+      style="width: 100%"
+      (p-show-more)="mostrarMaisParcelas()"
+      [p-actions]="parcelaListaAcoes"
+      [p-sort]="true"
+      [p-striped]="true"
+      [p-loading]="carregandoTabelaParcela"
+      [p-loading-show-more]="carregandoDadosParcela"
+      [p-show-more-disabled]="desabilitarCarregarMais"
+      [p-items]="listaParcelas"
+      [p-columns]="colunasTabelaParcela"
+      [p-actions-right]="true"
+    >
+    <ng-template p-table-cell-template let-column="column" let-row="row">
+      <div *ngIf="column.property === 'ativo'">
+        <span *ngIf="row.ativo == true" class="po-color-10 po-table-column-label">ATIVO</span>
+        <span *ngIf="row.ativo == false" class="po-color-07 po-table-column-label">INATIVO</span>
+      </div>
+    </ng-template>
+    </po-table>
+  </po-container>
+</po-page-list>
+
+<app-filtro-parcela
+#filtroParcelas
+(buscarMaisDados)="buscarMaisDados($event)"
+(buscarNovosDados)="buscarNovosDados($event)"
+></app-filtro-parcela>

@@ -1,0 +1,172 @@
+<po-page-default
+  [p-title]="nomePagina"
+  [p-breadcrumb]="navegacao"
+  [p-actions]="acoes"
+>
+  <po-container>
+    <form [formGroup]="formulario">
+      <div class="po-row">
+        <po-combo
+          class="po-md-6"
+          formControlName="banco"
+          p-label="Banco"
+          [p-filter-service]="bancoComboService"
+          [p-disabled]="somenteLeitura"
+          [p-clean]="!somenteLeitura ? false : true"
+          [p-required]="true"
+          [p-emit-object-value]="true"
+          (p-change)="alteraBanco($event)"
+        ></po-combo>
+
+        <po-combo
+          class="po-md-6"
+          formControlName="fornecedor"
+          p-label="Fornecedor"
+          [p-filter-service]="fornecedorComboService"
+          [p-disabled]="somenteLeitura"
+          [p-clean]="!somenteLeitura ? false : true"
+          [p-required]="true"
+          [p-emit-object-value]="true"
+          (p-change)="alteraFornecedor($event)"
+        ></po-combo>
+      </div>
+
+      <po-combo
+          class="po-md-6"
+          formControlName="tipoCompra"
+          p-label="Tipo"
+          [p-filter-service]="tipoCompraEnumComboService"
+          [p-disabled]="somenteLeitura"
+          [p-clean]="somenteLeitura ? false : true"
+          [p-required]="true"
+          [p-emit-object-value]="true"
+        ></po-combo>
+
+      <div class="po-row">
+        <po-textarea
+          class="po-md-12"
+          formControlName="descricao"
+          p-label="Descrição"
+          [p-disabled]="somenteLeitura"
+        ></po-textarea>
+      </div>
+
+      <div class="po-row">
+        <po-datepicker
+          class="po-md-6"
+          formControlName="dataCompra"
+          p-label="Data da compra"
+          [p-disabled]="somenteLeitura.toString()"
+        ></po-datepicker>
+
+        <po-combo
+        class="po-md-6"
+        formControlName="subgrupo"
+        p-label="Subgrupo"
+        [p-filter-service]="subgrupoComboService"
+        [p-disabled]="somenteLeitura"
+        [p-clean]="!somenteLeitura ? false : true"
+        [p-required]="true"
+        [p-emit-object-value]="true"
+        (p-change)="alteraSubgrupo($event)"
+      ></po-combo>
+      </div>
+
+      <div class="po-row">
+        <po-input
+          class="po-md-6"
+          formControlName="mesInicioCobranca"
+          p-label="Mês de início da cobrança"
+          [p-disabled]="somenteLeitura.toString()"
+          [p-clean]="!somenteLeitura ? 'false' : 'true'"
+          p-mask="99"
+          p-required="true"
+        ></po-input>
+
+        <po-input
+          class="po-md-6"
+          formControlName="anoInicioCobranca"
+          p-label="Ano de início da cobrança"
+          [p-disabled]="somenteLeitura.toString()"
+          [p-clean]="!somenteLeitura ? 'false' : 'true'"
+          p-mask="2099"
+          p-required="true"
+        ></po-input>
+      </div>
+
+      <div *ngIf="bancoNome == 'DINHEIRO'"  class="po-row">
+        <po-decimal
+          class="po-md-6"
+          formControlName="aliquotaImposta"
+          p-label="Alíquota imposta sobre a compra"
+          p-clean="true"
+          p-mask="999"
+          [p-disabled]="somenteLeitura.toString()"
+        ></po-decimal>
+
+        <po-decimal
+          class="po-md-6"
+          formControlName="valorImposto"
+          p-label="Valor imposto sobre a compra"
+          p-clean="true"
+          p-readonly="true"
+        ></po-decimal>
+      </div>
+
+      <div class="po-row">
+        <po-input
+            class="po-md-6"
+            formControlName="parcelas"
+            p-label="Quantidade de Parcelas"
+            [p-disabled]="somenteLeitura.toString()"
+            [p-clean]="!somenteLeitura ? 'false' : 'true'"
+            p-required="true"
+            p-mask="9999"
+          ></po-input>
+
+          <po-decimal
+            class="po-md-6"
+            formControlName="valor"
+            p-label="Valor total da Compra"
+            [p-disabled]="somenteLeitura.toString()"
+            [p-clean]="!somenteLeitura ? 'false' : 'true'"
+            p-required="true"
+          ></po-decimal>
+        </div>
+    </form>
+
+    <div class="po-row">
+      <div class="po-md-12">
+        <po-table
+          #tabelaResponsavel
+          style="width: 100%"
+          [p-striped]="true"
+          [p-items]="formulario.controls['responsaveis'].value"
+          [p-columns]="colunasResponsavelCompra"
+          [p-actions]="somenteLeitura ? [] : acoesLista"
+          [p-actions-right]="true"
+        >
+        </po-table>
+      </div>
+    </div>
+
+    <div class="po-row">
+      <div class="po-mt-1 po-mb-1 po-md-12">
+        <po-button
+          p-label="Incluir"
+          (p-click)="abrirModalResponsavelCompra()"
+          [p-small]="true"
+          [p-disabled]="somenteLeitura"
+        ></po-button>
+      </div>
+    </div>
+
+    <br /><br /><br />
+  </po-container>
+</po-page-default>
+
+<app-responsavel-compra
+  #modalResponsavelCompra
+  [responsaveis]="formulario.controls['responsaveis'].value"
+  (atualizarFormulario)="atualizarFormulario($event)"
+></app-responsavel-compra>

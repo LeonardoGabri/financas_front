@@ -1,0 +1,37 @@
+<po-page-list
+  #paginaListaCompra
+  [p-actions]="acoes"
+  [p-title]="nomePagina"
+  [p-filter]="compraListaFilter"
+  [p-disclaimer-group]="compraListaDisclaimer"
+>
+  <po-container style="width: 100%">
+    <po-table
+      #tabelaListaCompra
+      style="width: 100%"
+      (p-show-more)="mostrarMaisCompras()"
+      [p-actions]="compraListaAcoes"
+      [p-sort]="true"
+      [p-striped]="true"
+      [p-loading]="carregandoTabelaCompra"
+      [p-loading-show-more]="carregandoDadosCompra"
+      [p-show-more-disabled]="desabilitarCarregarMais"
+      [p-items]="listaCompras"
+      [p-columns]="colunasTabelaCompra"
+      [p-actions-right]="true"
+    >
+    <ng-template p-table-cell-template let-column="column" let-row="row">
+      <div *ngIf="column.property === 'tipoCompra'">
+        <span *ngIf="row.tipoCompra == 'EFETIVO'" class="po-color-10 po-table-column-label">EFETIVO</span>
+        <span *ngIf="row.tipoCompra == 'PROVISIONAMENTO'" class="po-color-01 po-table-column-label">PROVISIONAMENTO</span>
+      </div>
+    </ng-template>
+    </po-table>
+  </po-container>
+</po-page-list>
+
+<app-filtro-compra
+#filtrosCompra
+(buscarMaisDados)="buscarMaisDados($event)"
+(buscarNovosDados)="buscarNovosDados($event)"
+></app-filtro-compra>

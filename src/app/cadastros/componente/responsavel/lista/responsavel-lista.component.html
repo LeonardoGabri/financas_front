@@ -1,0 +1,31 @@
+<po-page-list
+  #paginaListaResponsavel
+  [p-actions]="acoes"
+  [p-title]="nomePagina"
+  [p-filter]="responsavelListaFilter"
+  [p-disclaimer-group]="responsavelListaDisclaimer"
+>
+  <po-container style="width: 100%">
+    <po-table
+      #tabelaListaResponsavel
+      style="width: 100%"
+      (p-show-more)="mostrarMaisResponsavels()"
+      [p-actions]="responsavelListaAcoes"
+      [p-sort]="true"
+      [p-striped]="true"
+      [p-loading]="carregandoTabelaResponsavel"
+      [p-loading-show-more]="carregandoDadosResponsavel"
+      [p-show-more-disabled]="desabilitarCarregarMais"
+      [p-items]="listaResponsavels"
+      [p-columns]="colunasTabelaResponsavel"
+      [p-actions-right]="true"
+    >
+    <ng-template p-table-cell-template let-column="column" let-row="row">
+      <div *ngIf="column.property === 'ativo'">
+        <span *ngIf="row.ativo == true" class="po-color-10 po-table-column-label">ATIVO</span>
+        <span *ngIf="row.ativo == false" class="po-color-07 po-table-column-label">INATIVO</span>
+      </div>
+    </ng-template>
+    </po-table>
+  </po-container>
+</po-page-list>

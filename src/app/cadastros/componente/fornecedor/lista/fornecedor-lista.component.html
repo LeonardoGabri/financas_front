@@ -1,0 +1,31 @@
+<po-page-list
+  #paginaListaFornecedor
+  [p-actions]="acoes"
+  [p-title]="nomePagina"
+  [p-filter]="fornecedorListaFilter"
+  [p-disclaimer-group]="fornecedorListaDisclaimer"
+>
+  <po-container style="width: 100%">
+    <po-table
+      #tabelaListaFornecedor
+      style="width: 100%"
+      (p-show-more)="mostrarMaisFornecedors()"
+      [p-actions]="fornecedorListaAcoes"
+      [p-sort]="true"
+      [p-striped]="true"
+      [p-loading]="carregandoTabelaFornecedor"
+      [p-loading-show-more]="carregandoDadosFornecedor"
+      [p-show-more-disabled]="desabilitarCarregarMais"
+      [p-items]="listaFornecedors"
+      [p-columns]="colunasTabelaFornecedor"
+      [p-actions-right]="true"
+    >
+    <ng-template p-table-cell-template let-column="column" let-row="row">
+      <div *ngIf="column.property === 'ativo'">
+        <span *ngIf="row.ativo == true" class="po-color-10 po-table-column-label">ATIVO</span>
+        <span *ngIf="row.ativo == false" class="po-color-07 po-table-column-label">INATIVO</span>
+      </div>
+    </ng-template>
+    </po-table>
+  </po-container>
+</po-page-list>

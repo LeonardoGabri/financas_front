@@ -1,0 +1,28 @@
+<div id="center">
+  <div class="po-row">
+    <form [formGroup]="formulario">
+      <div class="po-row">
+        <po-login
+          class="po-md-10"
+          p-label="Usuário"
+          formControlName="login"
+          p-required="true"
+          ></po-login>
+
+          <po-password
+            class="po-md-10"
+            p-label="Senha"
+            formControlName="password"
+            p-required="true"
+          ></po-password>
+      </div>
+
+      <po-button
+      class="po-md-8"
+      style="margin-left: 50px ;"
+      p-label="Entrar"
+      (p-click)="logar()"
+    ></po-button>
+    </form>
+  </div>
+</div>

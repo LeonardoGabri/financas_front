@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  meninos-guaras-app:
+    image: node:latest
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    ports:
+      - "4200:4200"
+    command: npm start

@@ -1,0 +1,38 @@
+<po-page-edit
+  [p-title]="nomePagina"
+  [p-breadcrumb]="navegacao"
+  (p-cancel)="cancelar()"
+  (p-save)="salvar()"
+>
+  <po-container>
+    <form [formGroup]="formulario">
+      <div class="po-row">
+        <po-input
+          class="po-md-12"
+          formControlName="nome"
+          p-label="Nome"
+          p-clean="true"
+          p-required="true"
+        ></po-input>
+      </div>
+      <div class="po-row">
+        <po-combo
+          class="po-md-12"
+          formControlName="grupoId"
+          p-label="Grupo"
+          [p-clean]="true"
+          [p-filter-service]="grupoComboService"
+          [p-required]="true"
+        ></po-combo>
+      </div>
+      <div class="po-row">
+        <po-textarea
+          class="po-md-12"
+          formControlName="descricao"
+          p-label="Descrição"
+        ></po-textarea>
+      </div>
+    </form>
+    <br /><br /><br />
+  </po-container>
+</po-page-edit>

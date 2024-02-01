@@ -1,0 +1,40 @@
+<po-page-edit
+  [p-title]="nomePagina"
+  [p-breadcrumb]="navegacao"
+  (p-cancel)="cancelar()"
+  (p-save)="salvar()"
+>
+  <po-container>
+    <form [formGroup]="formulario">
+      <div class="po-row">
+        <po-input
+          class="po-md-10"
+          formControlName="nome"
+          p-label="Nome"
+          p-clean="true"
+          p-required="true"
+        ></po-input>
+
+        <div class="po-md-2" style="display: flex; flex-direction: row-reverse">
+          <po-switch
+            style="width: 155px"
+            formControlName="ativo"
+            p-label="Situação"
+            p-label-on="Ativo"
+            p-label-off="Inativo"
+            p-required="true"
+          >
+          </po-switch>
+        </div>
+      </div>
+      <div class="po-row">
+        <po-textarea
+          class="po-md-12"
+          formControlName="descricao"
+          p-label="Descrição"
+        ></po-textarea>
+      </div>
+    </form>
+    <br /><br /><br />
+  </po-container>
+</po-page-edit>

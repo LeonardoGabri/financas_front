@@ -1,0 +1,49 @@
+<form #f="ngForm">
+  <input type="hidden" name="valueShow" [ngModel]="valueShow" />
+  <div class = "po-field container">
+    <label class="po-field-title" for="date"><b>{{ label }}</b>
+    </label>
+    <span *ngIf="optionalDataHora" class="po-field-optional ng-star-inserted">(Opcional)</span>
+  </div>
+
+  <po-datepicker
+    #fDate="ngModel"
+    class="po-md-7 po-p-0"
+    name="date"
+    [p-clean]="cleanDate"
+    [p-format]="formatDate"
+    [p-max-date]="max"
+    [p-min-date]="min"
+    [appValidateDateGreater]="dateValidateDayInterval"
+    [p-readonly]="isReadOnly"
+    [required]="isRequired == 'true' ? 'true' : isRequiredFullDate"
+    [p-required]="isRequired == 'true' ? 'true' : isRequiredFullDate"
+    [disabled]="isDisabled"
+    [(ngModel)]="date"
+    [p-optional]="optionalDataHora"
+  >
+  </po-datepicker>
+
+  <po-input
+    class="po-md-5 po-pl-1 po-pr-0"
+    name="time"
+    p-icon="po-icon-clock"
+    p-mask-format-model
+    (p-change)="timeChange()"
+    [p-mask]="timeMask"
+    [p-pattern]="timePattern"
+    [p-readonly]="isReadOnly"
+    [disabled]="isDisabled"
+    [required]="isRequired == 'true' ? 'true' : isRequiredFullDate"
+    [appValidateDateGreater]="dateValidateMinMax"
+    [(ngModel)]="time"
+    [p-optional]="optionalDataHora"
+  >
+  </po-input>
+
+  <po-field-container-bottom
+    *ngIf="fDate.errors?.dateIsGreater && dateValidateDayInterval.minDate"
+    [p-error-pattern]="msgDataIsGreater"
+  >
+  </po-field-container-bottom>
+</form>

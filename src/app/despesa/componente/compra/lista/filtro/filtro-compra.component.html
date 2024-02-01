@@ -1,0 +1,53 @@
+<po-modal
+  #filtroCompra
+  p-size="md"
+  p-title="Busca avançada Parcelas"
+  [p-primary-action]="acaoFiltro"
+>
+  <form
+    [formGroup]="formulario"
+  >
+  <div class="po-row">
+    <po-combo
+      class="po-md-12"
+      formControlName="bancoId"
+      p-label="Banco"
+      [p-filter-service]="bancoComboService"
+    ></po-combo>
+  </div>
+
+  <div class="po-row">
+    <po-combo
+      class="po-md-12"
+      formControlName="fornecedorId"
+      p-label="Fornecedor"
+      [p-filter-service]="fornecedorComboService"
+    ></po-combo>
+  </div>
+
+  <div class="po-row">
+    <po-combo
+      class="po-md-12"
+      formControlName="subgrupoId"
+      p-label="Subgrupo"
+      [p-filter-service]="subgrupoComboService"
+    ></po-combo>
+  </div>
+
+  <div class="po-row">
+    <po-datepicker
+          class="po-md-6"
+          formControlName="dataInicio"
+          p-label="Data da compra - Início"
+          p-required="true"
+        ></po-datepicker>
+
+        <po-datepicker
+          class="po-md-6"
+          formControlName="dataFim"
+          p-label="Data da compra - Fim"
+          p-required="true"
+        ></po-datepicker>
+  </div>
+  </form>
+</po-modal>
