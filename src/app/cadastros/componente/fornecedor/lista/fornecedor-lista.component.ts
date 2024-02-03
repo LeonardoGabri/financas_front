@@ -193,6 +193,7 @@ export class FornecedorListaComponent implements OnInit{
 
     return {
       nome: filtro?.nome?.value,
+      ativo: filtro?.nome?.value,
       pesquisar: filtroLista,
     } as FiltroFornecedorParametroModel;
   }

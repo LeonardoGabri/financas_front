@@ -2,8 +2,6 @@ import { PoTableColumnLabel } from "@po-ui/ng-components"
 import { FiltroDisclaimerModel } from "src/app/shared/model/FiltroDisclaimer.model"
 
 export interface FiltroBancoParametroModel {
-  nome?: string
-  ativo: boolean
   pesquisar?: string
 }
 

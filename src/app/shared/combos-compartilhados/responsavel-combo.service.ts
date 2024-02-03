@@ -13,7 +13,7 @@ export class ResponsavelComboService implements PoComboFilter{
 
   getFilteredData(param: any, filterParams?: any): Observable<PoComboOption[]> {
     const params = { name: param.value };
-    return this.responsavelApiService.buscarResponsavels().pipe(
+    return this.responsavelApiService.buscarResponsavels({pesquisar: params.name}).pipe(
       map((response: any) => {
         if (response) {
           return response.content.map((grupo: any) => {

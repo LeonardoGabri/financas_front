@@ -1,10 +1,7 @@
-import { Injectable } from "@angular/core";
-import { PoComboFilter, PoComboOption } from "@po-ui/ng-components";
-import { Observable, map } from "rxjs";
-import { BancoApiService } from "src/app/cadastros/componente/banco/servico/banco-api.service";
-import { FornecedorApiService } from "src/app/cadastros/componente/fornecedor/servico/fornecedor-api.service";
-import { GrupoApiService } from "src/app/cadastros/componente/grupo/servico/responsavel-api.service";
-import { SubgrupoApiService } from "src/app/cadastros/componente/subgrupo/servico/responsavel-api.service";
+import { Injectable } from '@angular/core';
+import { PoComboFilter, PoComboOption } from '@po-ui/ng-components';
+import { map, Observable } from 'rxjs';
+import { SubgrupoApiService } from 'src/app/cadastros/componente/subgrupo/servico/responsavel-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +10,7 @@ export class SubgrupoComboService implements PoComboFilter{
 
   getFilteredData(param: any, filterParams?: any): Observable<PoComboOption[]> {
     const params = { name: param.value };
-    return this.subgrupoApiService.buscarSubgrupos().pipe(
+    return this.subgrupoApiService.buscarSubgrupos({pesquisar: params.name}).pipe(
       map((response: any) => {
         if (response) {
           return response.content.map((grupo: any) => {

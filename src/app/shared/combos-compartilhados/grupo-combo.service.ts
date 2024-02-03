@@ -11,7 +11,7 @@ export class GrupoComboService implements PoComboFilter{
 
   getFilteredData(param: any, filterParams?: any): Observable<PoComboOption[]> {
     const params = { name: param.value };
-    return this.grupoApiService.buscarGrupos().pipe(
+    return this.grupoApiService.buscarGrupos({pesquisar: params.name}).pipe(
       map((response: any) => {
         if (response) {
           return response.content.map((grupo: any) => {

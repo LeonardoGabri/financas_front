@@ -1,8 +1,6 @@
 import { FiltroDisclaimerModel } from "src/app/shared/model/FiltroDisclaimer.model"
 
 export interface FiltroGrupoParametroModel {
-  nome?: string
-  ativo: boolean
   pesquisar?: string
 }
 

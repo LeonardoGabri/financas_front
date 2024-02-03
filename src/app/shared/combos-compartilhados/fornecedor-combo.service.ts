@@ -12,7 +12,7 @@ export class FornecedorComboService implements PoComboFilter{
 
   getFilteredData(param: any, filterParams?: any): Observable<PoComboOption[]> {
     const params = { name: param.value };
-    return this.fornecedorApiService.buscarFornecedors().pipe(
+    return this.fornecedorApiService.buscarFornecedors({pesquisar: params.name}).pipe(
       map((response: any) => {
         if (response) {
           return response.content.map((grupo: any) => {

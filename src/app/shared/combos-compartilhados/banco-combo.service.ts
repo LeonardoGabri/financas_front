@@ -11,7 +11,7 @@ export class BancoComboService implements PoComboFilter{
 
   getFilteredData(param: any, filterParams?: any): Observable<PoComboOption[]> {
     const params = { name: param.value };
-    return this.bancoApiService.buscarBancos().pipe(
+    return this.bancoApiService.buscarBancos({pesquisar: params.name}).pipe(
       map((response: any) => {
         if (response) {
           return response.content.map((banco: any) => {
