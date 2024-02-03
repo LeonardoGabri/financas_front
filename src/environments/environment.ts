@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   url: {
-    service: 'http://localhost:8083'
+    service: 'http://financasapi-production.up.railway.app'
     //service: '${URL_SERVICE}'
   }
 }

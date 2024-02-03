@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit{
     this.authService.onLogin(this.formulario.getRawValue()).subscribe({
       next: (response: any) => {
         if(response){
-          debugger
           localStorage.setItem('token', response.token)
           this.router.navigate(['/cadastros'])
         }else{

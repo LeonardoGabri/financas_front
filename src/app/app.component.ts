@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
       }else{
         this.hiddenMenu = true;
       }
-      debugger
       if (event instanceof NavigationStart) {
       } else if (event instanceof NavigationEnd) {
       }
