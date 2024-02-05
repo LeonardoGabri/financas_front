@@ -1,3 +1,4 @@
+import { PoNavbarLiterals } from '@po-ui/ng-components/lib/components/po-navbar/interfaces/po-navbar-literals.interface';
 import { FiltroDisclaimerModel } from "src/app/shared/model/FiltroDisclaimer.model"
 
 export interface FiltroCompraParametroModel {

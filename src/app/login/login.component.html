@@ -16,13 +16,13 @@
             p-required="true"
           ></po-password>
       </div>
+    </form>
 
-      <po-button
-      class="po-md-8"
-      style="margin-left: 50px ;"
+    <po-button
+      class="po-md-4"
       p-label="Entrar"
       (p-click)="logar()"
+      [p-disabled]="desabilitaBotaoLogar"
     ></po-button>
-    </form>
   </div>
 </div>

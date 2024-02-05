@@ -1,27 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { PoNavbarIconAction, PoNavbarItem } from '@po-ui/ng-components';
-import { menuArrayFinancas } from './service/navegacao-app.service';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { PoMenuItem } from '@po-ui/ng-components';
 import { filter } from 'rxjs/operators';
+import { menuArrayFinancas } from './service/navegacao-app.service';
 
 @Component({
   selector: 'app',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['app.component.css']
 })
 export class AppComponent implements OnInit {
+  readonly menus: PoMenuItem[] = menuArrayFinancas
 
-  readonly iconNav: PoNavbarIconAction[] = [];
-  readonly menus: PoNavbarItem[] = menuArrayFinancas;
+  @ViewChild('menuInicial', {static: true})
+  readonly menuInicial!: PoMenuItem[]
 
   hiddenMenu = true;
 
-  constructor(private router: Router) {
-    this.iconNav = [{
-      label: '',
-      icon: 'po-icon-exit',
-      action: this.logout.bind(this)
-    }];
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.router.events.pipe(
