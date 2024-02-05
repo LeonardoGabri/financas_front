@@ -42,16 +42,16 @@ export class DespesaComponent implements OnInit, OnDestroy{
   selecionaLinkMenu(){
     let url = this.router.url;
 
-    url && menuDespesaArray.every((itemMenu) => {
-      if(itemMenu.link && url.includes(itemMenu.link)){
-        this.changeDetectorRef.detectChanges();
+    // url && menuDespesaArray.every((itemMenu) => {
+    //   if(itemMenu.link && url.includes(itemMenu.link)){
+    //     this.changeDetectorRef.detectChanges();
 
-        this.menuDespesa.checkActiveMenuByUrl(itemMenu.link)
+    //     this.menuDespesa.checkActiveMenuByUrl(itemMenu.link)
 
-        return false
-      }
+    //     return false
+    //   }
 
-      return true
-    })
+    //   return true
+    // })
   }
 }

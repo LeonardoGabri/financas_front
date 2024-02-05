@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
   formulario!: FormGroup
+  desabilitaBotaoLogar = true
 
   storeAuth$ = new Subscription
 
@@ -26,6 +27,14 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this.criarFormulario();
+
+    this.formulario.statusChanges.subscribe((status) =>{
+      if(status == 'INVALID') {
+        this.desabilitaBotaoLogar = true
+      }else{
+        this.desabilitaBotaoLogar = false
+      }
+    })
   }
 
   criarFormulario(novoFormulario?: any){

@@ -1,7 +1,10 @@
 
-<po-navbar [hidden]="hiddenMenu"[p-shadow]="true" [p-items]="menus" [p-icon-actions]="iconNav"></po-navbar>
+<po-menu #menuInicial [p-menus]="menus" [hidden]="hiddenMenu"></po-menu>
 
 <div class="po-wrapper">
+  <div class="icon-corner">
+    <po-icon p-icon="po-icon-exit" (click)="logout()"></po-icon>
+  </div>
   <router-outlet></router-outlet>
 </div>
 
