@@ -46,7 +46,7 @@ export class CadastroComponent implements OnInit, OnDestroy{
       if(itemMenu.link && url.includes(itemMenu.link)){
         this.changeDetectorRef.detectChanges();
 
-        this.menuCadastro.checkActiveMenuByUrl(itemMenu.link)
+        //this.menuCadastro.checkActiveMenuByUrl(itemMenu.link)
 
         return false
       }
